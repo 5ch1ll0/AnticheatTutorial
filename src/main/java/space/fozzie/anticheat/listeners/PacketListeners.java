@@ -2,6 +2,7 @@ package space.fozzie.anticheat.listeners;
 
 import cc.funkemunky.api.event.custom.PacketReceiveEvent;
 import cc.funkemunky.api.event.system.EventMethod;
+import cc.funkemunky.api.event.system.Listener;
 import cc.funkemunky.api.tinyprotocol.api.Packet;
 import cc.funkemunky.api.tinyprotocol.packet.in.WrappedInFlyingPacket;
 import cc.funkemunky.api.utils.Init;
@@ -17,7 +18,7 @@ import java.util.ArrayList;
  * Created by George on 27/04/2019 at 18:37.
  */
 @Init
-public class PacketListeners {
+public class PacketListeners implements Listener {
 
     @EventMethod
     public void onEvent(PacketReceiveEvent event) {

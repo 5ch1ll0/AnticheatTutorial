@@ -8,6 +8,7 @@ import org.bukkit.entity.Player;
 import space.fozzie.anticheat.AnticheatTutorial;
 import space.fozzie.anticheat.checks.Check;
 import space.fozzie.anticheat.processors.MovementProcessor;
+import space.fozzie.anticheat.utils.BukkitEvents;
 import space.fozzie.anticheat.utils.Packets;
 
 import java.util.*;
@@ -46,6 +47,18 @@ public class PlayerData {
                 checks.add(check);
 
                 packetChecks.put(packet, checks);
+            });
+        });
+
+        checks.stream().filter(check -> check.getClass().isAnnotationPresent(BukkitEvents.class)).forEach(check -> {
+            BukkitEvents events = check.getClass().getAnnotation(BukkitEvents.class);
+
+            Arrays.stream(events.events()).forEach(event -> {
+                List<Check> checks = bukkitChecks.getOrDefault(event, new ArrayList<>());
+
+                checks.add(check);
+
+                bukkitChecks.put(event, checks);
             });
         });
     }

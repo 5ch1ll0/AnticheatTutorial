@@ -6,6 +6,7 @@ import cc.funkemunky.api.utils.JsonMessage;
 import lombok.Getter;
 import lombok.Setter;
 import org.bukkit.Bukkit;
+import org.bukkit.event.Event;
 import space.fozzie.anticheat.data.PlayerData;
 
 /**
@@ -38,4 +39,6 @@ public abstract class Check implements Listener, org.bukkit.event.Listener {
     }
 
     public abstract void onPacket(Object packet, String packetType, long timeStamp);
+
+    public abstract void onBukkitEvent(Event event);
 }

@@ -23,7 +23,6 @@ import java.util.Comparator;
 public class AnticheatTutorial extends JavaPlugin {
 
     @Getter private static AnticheatTutorial instance;
-
     private String[] requiredVersionsOfAtlas = new String[] {"1.2-PRE-b8"};
 
     private CheckManager checkManager;
