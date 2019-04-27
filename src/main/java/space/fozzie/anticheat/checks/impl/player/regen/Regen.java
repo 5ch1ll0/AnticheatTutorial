@@ -29,7 +29,7 @@ public class Regen extends Check {
         EntityRegainHealthEvent e = (EntityRegainHealthEvent) event;
 
         if (e.getRegainReason().equals(EntityRegainHealthEvent.RegainReason.SATIATED)) {
-            if (verbose.flag(2, cc.funkemunky.api.tinyprotocol.api.ProtocolVersion.getGameVersion().isBelow(ProtocolVersion.V1_9) ? 750L : 450L)) {
+            if (verbose.flag(2, ProtocolVersion.getGameVersion().isBelow(ProtocolVersion.V1_9) ? 750L : 450L)) {
                 flag("");
             }
         }
