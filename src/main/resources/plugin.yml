@@ -1,0 +1,5 @@
+name: AnticheatTutorial
+main: space.fozzie.anticheat.AnticheatTutorial
+version: 1.0.0
+depend: [Atlas]
+authors: [Fozzie]
