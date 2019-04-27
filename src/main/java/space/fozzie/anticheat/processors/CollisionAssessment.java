@@ -25,7 +25,7 @@ public class CollisionAssessment {
     private Set<Material> materialsCollided;
     private BoundingBox playerBox;
 
-    public CollisionAssessment(BoundingBox boundingBox, PlayerData data) {
+    public CollisionAssessment(BoundingBox playerBox, PlayerData data) {
         onGround = inLiquid = false;
         this.data = data;
         this.playerBox = playerBox;
