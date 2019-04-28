@@ -30,8 +30,6 @@ public class LiquidWalk extends Check {
 
         if (BlockUtils.isLiquid(getData().getPlayer().getLocation().subtract(0, 0.1, 0).getBlock())
                 && !BlockUtils.isLiquid(getData().getPlayer().getLocation().clone().add(0, 0.2, 0).getBlock()) && move.getWebTicks() == 0) {
-            float yDelta = (float) MathUtils.getVerticalDistance(move.getFrom(), move.getTo());
-
             if (!move.isServerOnGround() && verbose.flag(10, 250L)) {
                 flag(verbose.getVerbose() + " > 10");
             }
