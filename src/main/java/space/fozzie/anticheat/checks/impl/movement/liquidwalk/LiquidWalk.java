@@ -26,7 +26,7 @@ public class LiquidWalk extends Check {
 
     @Override
     public void onPacket(Object packet, String packetType, long timeStamp) {
-        val move = getData().getMovementProcessor();
+        MovementProcessor move = getData().getMovementProcessor();
 
         if (BlockUtils.isLiquid(getData().getPlayer().getLocation().subtract(0, 0.1, 0).getBlock())
                 && !BlockUtils.isLiquid(getData().getPlayer().getLocation().clone().add(0, 0.2, 0).getBlock()) && move.getWebTicks() == 0) {
