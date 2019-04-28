@@ -2,6 +2,7 @@ package space.fozzie.anticheat.checks;
 
 import lombok.Getter;
 import lombok.Setter;
+import space.fozzie.anticheat.checks.impl.movement.liquidwalk.LiquidWalk;
 import space.fozzie.anticheat.checks.impl.player.regen.Regen;
 import space.fozzie.anticheat.data.PlayerData;
 
@@ -24,6 +25,7 @@ public class CheckManager {
     public List<Check> loadChecks() {
         List<Check> checks = new ArrayList<>();
         checks.add(new Regen("Regen"));
+        checks.add(new LiquidWalk("Liquid Walk"));
 
         return checks;
     }

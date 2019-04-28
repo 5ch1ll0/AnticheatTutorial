@@ -21,7 +21,7 @@ import java.util.Set;
 public class CollisionAssessment {
 
     private PlayerData data;
-    private boolean onGround, inLiquid;
+    private boolean onGround, inLiquid, inWeb;
     private Set<Material> materialsCollided;
     private BoundingBox playerBox;
 
@@ -43,6 +43,10 @@ public class CollisionAssessment {
         } else {
             if (BlockUtils.isLiquid(block) && playerBox.collidesVertically(bb)) {
                 inLiquid = true;
+            }
+
+            if (block.getType().toString().contains("WEB") && playerBox.collidesVertically(bb)) {
+                inWeb = true;
             }
         }
         addMaterial(block);

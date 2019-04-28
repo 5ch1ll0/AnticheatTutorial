@@ -6,6 +6,7 @@ import cc.funkemunky.api.utils.BoundingBox;
 import cc.funkemunky.api.utils.ReflectionsUtil;
 import lombok.Getter;
 import lombok.val;
+import org.bukkit.Location;
 import org.bukkit.entity.Vehicle;
 import space.fozzie.anticheat.data.PlayerData;
 
@@ -18,13 +19,21 @@ import java.util.List;
 @Getter
 public class MovementProcessor {
 
-    private boolean inLiquid, serverOnGround;
-    private int liquidTicks;
+    private boolean inLiquid, inWeb, serverOnGround;
+    private int liquidTicks, webTicks;
+    private Location from, to;
     private List<BoundingBox> boxes = new ArrayList<>();
 
     public void update(PlayerData data, WrappedInFlyingPacket packet) {
         val player = packet.getPlayer();
         val timeStamp = System.currentTimeMillis();
+
+        if (from == null || to == null) {
+            from = new Location(data.getPlayer().getWorld(), 0, 0, 0);
+            to = new Location(data.getPlayer().getWorld(), 0, 0, 0);
+        }
+
+        from = to.clone();
 
         if (packet.isPos()) {
             data.setBoundingBox(ReflectionsUtil.toBoundingBox(ReflectionsUtil.getBoundingBox(packet.getPlayer())));
@@ -39,8 +48,10 @@ public class MovementProcessor {
 
             serverOnGround = assessment.isOnGround();
             inLiquid = assessment.isInLiquid();
+            inWeb = assessment.isInWeb();
 
             liquidTicks = inLiquid ? Math.min(50, liquidTicks + 1) : Math.max(0, liquidTicks - 1);
+            webTicks = inWeb ? Math.min(50, webTicks + 1) : Math.max(0, webTicks - 1);
         }
     }
 }
